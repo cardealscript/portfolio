@@ -1,3 +1,23 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is contact.html — the CONTACT PAGE of Inova Palavra.
+
+  This page contains a contact form with three fields:
+  - Name
+  - Email
+  - Message
+
+  The form uses standard HTML5 validation (required attribute)
+  to ensure the user fills in all fields before submitting.
+  All labels are bilingual — translated by script.js.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +30,7 @@
 </head>
 <body>
 
+  <!-- HEADER — "Contact" link has class="active" on this page -->
   <header>
     <div class="container header-content">
       <a href="index.html" class="brand">
@@ -30,6 +51,7 @@
           <li><a href="about.html" data-i18n="nav-about">About</a></li>
           <li><a href="categories.html" data-i18n="nav-categories">Categories</a></li>
           <li><a href="contact.html" class="active" data-i18n="nav-contact">Contact</a></li>
+          <!-- class="active" marks "Contact" as the current page -->
           <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
         </ul>
       </nav>
@@ -38,7 +60,10 @@
 
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
+    <!-- PAGE HERO -->
     <section class="hero-section">
       <div class="container">
         <h1 data-i18n="contact-title">Contact Us</h1>
@@ -46,29 +71,77 @@
       </div>
     </section>
 
+
+    <!-- CONTACT FORM SECTION -->
     <section class="container contact-container">
       <div class="card contact-card">
+      <!-- .card applies the standard card styling (background, border-radius, padding).
+           .contact-card adds additional styles: max-width, centred, more padding.
+           This is called class composition — combining existing styles instead of
+           repeating CSS rules. -->
+
         <form action="#" method="post" id="contact-form">
+        <!-- action="#" is a placeholder — in a real project this would point
+             to a server endpoint (e.g. action="/send-message") or a
+             form service URL (e.g. Formspree, EmailJS).
+             method="post" sends form data in the request body (more secure
+             than method="get" which appends data visibly in the URL). -->
+
+
+          <!-- FORM GROUP: Name -->
           <div class="form-group">
+          <!-- .form-group wraps each label + input pair.
+               It adds consistent margin-bottom between fields. -->
+
             <label for="name" data-i18n="label-name">Name</label>
+            <!-- for="name" connects this label to the input with id="name".
+                 WHY: When the user clicks the LABEL, the INPUT gets focused.
+                 This is important for accessibility and usability on mobile —
+                 the touch target for the label also activates the input. -->
+
             <input type="text" id="name" name="name" required>
+            <!-- type="text" = standard single-line text input.
+                 id="name" connects to the label above.
+                 name="name" is the key sent to the server when the form submits.
+                 required triggers HTML5 built-in validation —
+                 the browser shows an error and prevents submission if this is empty. -->
           </div>
 
+
+          <!-- FORM GROUP: Email -->
           <div class="form-group">
             <label for="email" data-i18n="label-email">Email</label>
             <input type="email" id="email" name="email" required>
+            <!-- type="email" enables built-in email validation:
+                 - Browser checks the value contains "@" and a domain
+                 - On mobile, shows the email keyboard layout automatically -->
           </div>
 
+
+          <!-- FORM GROUP: Message -->
           <div class="form-group">
             <label for="message" data-i18n="label-message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
+            <!-- <textarea> is a multi-line text input — appropriate for messages.
+                 rows="5" sets the default visible height (5 lines tall).
+                 Users can resize it by dragging the corner handle.
+                 Unlike <input>, <textarea> has a separate closing tag. -->
           </div>
 
+
+          <!-- SUBMIT BUTTON -->
           <button type="submit" class="btn btn-full" data-i18n="send-btn">Send Message</button>
+          <!-- type="submit" triggers form validation and submission when clicked.
+               .btn applies the green button style from base.css.
+               .btn-full makes the button span the full width of the form.
+               data-i18n="send-btn" — text translates to "Enviar Mensagem" in PT. -->
+
         </form>
       </div>
     </section>
+
   </main>
+
 
   <footer>
     <div class="container">
@@ -78,5 +151,10 @@
   </footer>
 
   <script src="js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

@@ -1,3 +1,24 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is categories.html — the CATEGORIES PAGE of Inova Palavra.
+
+  This page organises all articles by theme:
+  - Society & Poverty → The Market of Donations
+  - Justice & Inequality → Justice Without Defense
+  - Youth & Future → Youth Without Future
+  - Family & Conscience → How to Tell the Truth to a Child
+
+  Each category has a label, then a card grid with the articles
+  that belong to it. The design makes it easy for readers to
+  find topics they care about most.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +31,7 @@
 </head>
 <body>
 
+  <!-- HEADER — "Categories" link has class="active" on this page -->
   <header>
     <div class="container header-content">
       <a href="index.html" class="brand">
@@ -29,6 +51,7 @@
           <li><a href="index.html" data-i18n="nav-home">Home</a></li>
           <li><a href="about.html" data-i18n="nav-about">About</a></li>
           <li><a href="categories.html" class="active" data-i18n="nav-categories">Categories</a></li>
+          <!-- class="active" marks this as the current page in the nav -->
           <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
           <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
         </ul>
@@ -38,24 +61,51 @@
 
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
+    <!-- PAGE HERO -->
     <section class="hero-section">
       <div class="container">
         <h1 data-i18n="cat-title">Content Categories</h1>
       </div>
     </section>
 
-    <section class="categories-container container">
 
+    <!-- CATEGORIES CONTENT -->
+    <section class="categories-container container">
+    <!-- Both classes applied: .categories-container adds padding,
+         .container centres and limits the max width. -->
+
+
+      <!-- =====================================================
+           CATEGORY 1: SOCIETY & POVERTY
+           =====================================================
+           .category-label is styled as small uppercase text
+           in the primary green colour — acts as a section divider.
+           ===================================================== -->
       <p class="category-label" data-i18n="cat-society">Society & Poverty</p>
+
       <div class="category-cards">
+      <!-- .category-cards uses CSS Grid — same responsive behaviour as .cards.
+           Each article gets its own card. Multiple articles per category
+           would appear side by side on desktop. -->
+
         <article class="card">
-          <h3><a href="articles/market-of-donations.html" data-i18n="card1-title">The Market of Donations</a></h3>
+          <!-- <article> = semantic HTML5 for self-contained content -->
+
+          <h3>
+            <a href="articles/market-of-donations.html" data-i18n="card1-title">The Market of Donations</a>
+            <!-- The article title is a link — users can click anywhere on
+                 the title to navigate to the full article, not just "Read More". -->
+          </h3>
           <p data-i18n="card1-desc">A critical reflection on how donated clothes turn into business, questioning dignity and solidarity.</p>
           <a href="articles/market-of-donations.html" class="btn-small" data-i18n="read-more">Read More</a>
         </article>
       </div>
 
+
+      <!-- CATEGORY 2: JUSTICE & INEQUALITY -->
       <p class="category-label" data-i18n="cat-justice">Justice & Inequality</p>
       <div class="category-cards">
         <article class="card">
@@ -65,6 +115,8 @@
         </article>
       </div>
 
+
+      <!-- CATEGORY 3: YOUTH & FUTURE -->
       <p class="category-label" data-i18n="cat-youth">Youth & Future</p>
       <div class="category-cards">
         <article class="card">
@@ -74,6 +126,8 @@
         </article>
       </div>
 
+
+      <!-- CATEGORY 4: FAMILY & CONSCIENCE -->
       <p class="category-label" data-i18n="cat-family">Family & Conscience</p>
       <div class="category-cards">
         <article class="card">
@@ -84,7 +138,9 @@
       </div>
 
     </section>
+
   </main>
+
 
   <footer>
     <div class="container">
@@ -94,5 +150,10 @@
   </footer>
 
   <script src="js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

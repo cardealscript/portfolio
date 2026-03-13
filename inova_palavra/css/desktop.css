@@ -1,93 +1,169 @@
-/* ================================================
-   INOVA PALAVRA — DESKTOP.CSS
-   Estilos específicos para ecrãs >= 769px
-   ================================================ */
+/* ============================================================
+   Hello, World! 👋
+   My name is Cardeal Felisberto — frontend developer from
+   Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+   at BYU.
 
-/* ================================
-   NAVEGAÇÃO DESKTOP
-   ================================ */
+   This is desktop.css — styles that apply ONLY on screens
+   wider than 768px (tablets, laptops, desktop monitors).
+
+   WHY A SEPARATE FILE: We split CSS into three files:
+   base.css (shared), desktop.css (large screens),
+   mobile.css (small screens). This keeps each file focused,
+   easier to read, and easier to maintain.
+
+   HOW: Everything in this file lives inside a @media query.
+   The browser reads it only when the screen is >= 769px wide.
+   ============================================================ */
+
+
+/* ============================================================
+   SECTION 1 — MEDIA QUERY WRAPPER
+   ============================================================
+   @media (min-width: 769px) means:
+   "Apply these styles ONLY if the screen is at least 769px wide."
+
+   This is called a breakpoint. Below 769px, mobile.css takes over.
+   ============================================================ */
 @media (min-width: 769px) {
 
-  /* Hambúrguer: escondido em desktop */
+  /* ============================================================
+     HAMBURGER BUTTON — Hidden on desktop
+     ============================================================
+     WHY: On desktop, the nav links are visible directly in the
+     header. There is no need for a hamburger toggle button.
+
+     !important overrides any other rule that might show it.
+     We use it here because mobile.css uses display:flex to
+     show the hamburger — !important ensures desktop always wins.
+     ============================================================ */
   .hamburger {
     display: none !important;
   }
 
-  /* Nav normal em desktop */
+
+  /* ============================================================
+     NAV — Standard horizontal navigation on desktop
+     ============================================================
+     WHY: On mobile, nav is a fixed panel that slides in from
+     the right (position:fixed, right:-100%). On desktop, we
+     reset all of those mobile-specific styles and make the
+     nav behave as a normal inline element in the header.
+
+     HOW:
+     - position:static puts it back in the normal document flow
+     - width/height:auto lets it shrink to fit its content
+     - background:none removes the white mobile panel background
+     - overflow:visible allows dropdown menus in future
+     ============================================================ */
   nav {
-    position: static;
-    width: auto;
+    position: static;    /* Back in normal flow — not fixed/absolute */
+    width: auto;         /* Shrinks to fit content */
     height: auto;
-    background: none;
+    background: none;    /* No white background panel on desktop */
     padding: 0;
-    box-shadow: none;
-    overflow: visible;
+    box-shadow: none;    /* No shadow on desktop nav */
+    overflow: visible;   /* Allows future dropdown menus to appear */
   }
 
+  /* Horizontal list — links side by side instead of stacked */
   nav ul {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 30px;           /* Space between each nav link */
     align-items: center;
-    flex-direction: row;
+    flex-direction: row; /* Horizontal layout (mobile uses column) */
   }
 
   nav ul li {
-    border-bottom: none;
-    width: auto;
+    border-bottom: none; /* Remove the divider lines used in mobile menu */
+    width: auto;         /* Let each item size to its content */
   }
 
   nav ul li:last-child {
-    padding-top: 0;
+    padding-top: 0;      /* Remove extra top padding used only on mobile */
   }
 
+  /* Desktop nav link styles */
   nav a {
     text-decoration: none;
     color: var(--color-dark);
     font-size: 0.95rem;
     font-weight: 500;
     transition: var(--transition);
-    position: relative;
+    position: relative;  /* Required for the ::after animated underline */
     display: inline;
     padding: 0;
   }
 
+  /* Animated underline — slides in from left on hover/active */
+  /* Starts at width:0 (invisible) and transitions to width:100% */
   nav a::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: -4px;  /* 4px below the link text */
     left: 0;
-    width: 0;
+    width: 0;      /* Hidden by default */
     height: 1.5px;
-    background: var(--color-primary);
+    background: var(--color-primary); /* Green underline */
     transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   nav a:hover,
-  nav a.active {
+  nav a.active {          /* .active marks the current page link */
     color: var(--color-primary);
   }
 
   nav a:hover::after,
   nav a.active::after {
-    width: 100%;
+    width: 100%; /* Underline slides in */
   }
 
-  /* Botão fechar: escondido em desktop */
+
+  /* ============================================================
+     CLOSE BUTTON — Hidden on desktop
+     ============================================================
+     WHY: The × close button only makes sense inside the mobile
+     slide-in menu. On desktop the menu is always visible and
+     there is nothing to close.
+     ============================================================ */
   .nav-close {
     display: none !important;
   }
 
-  /* Overlay: nunca visível em desktop */
+
+  /* ============================================================
+     OVERLAY — Never visible on desktop
+     ============================================================
+     WHY: The dark overlay only appears behind the mobile slide-in
+     menu. On desktop, the nav is always open in the header —
+     there is no overlay needed.
+     ============================================================ */
   .nav-overlay {
     display: none !important;
   }
 
-  /* Imagens flutuantes nos artigos — apenas desktop */
+
+  /* ============================================================
+     ARTICLE IMAGES — Float layout on desktop
+     ============================================================
+     WHY: On desktop, articles can have images that float to the
+     left or right, with text wrapping around them. This creates
+     a magazine-style layout and makes better use of the wide
+     screen space.
+
+     On mobile (mobile.css), these images are reset to full-width
+     and stacked above the text — float layouts don't work well
+     on narrow screens.
+
+     float:left means the image goes to the left and text wraps
+     on its right side. float:right is the opposite.
+     margin creates space between the image and the wrapping text.
+     ============================================================ */
   .small-image-left {
     float: left;
     width: 300px;
-    margin: 0 30px 20px 0;
+    margin: 0 30px 20px 0; /* Space to the right and below the image */
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
@@ -95,9 +171,17 @@
   .small-image-right {
     float: right;
     width: 300px;
-    margin: 0 0 20px 30px;
+    margin: 0 0 20px 30px; /* Space to the left and below the image */
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-}
+} /* End of @media (min-width: 769px) */
+
+
+/* ============================================================
+
+   Typed with love by Cardeal Felisberto 🇲🇿
+   I love to code.
+
+   ============================================================ */

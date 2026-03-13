@@ -1,18 +1,50 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is market-of-donations.html — an article page for
+  "The Market of Donations" on Inova Palavra.
+
+  ARTICLE STRUCTURE:
+  - Hero section with title and author info
+  - Full-width header image
+  - Article body (chronicle) with paragraphs and a blockquote
+  - All text is bilingual via data-i18n attributes
+
+  NOTE ON PATHS: This file is inside the /articles/ subfolder.
+  CSS and image paths use "../" to go UP one level first:
+  "../css/base.css" instead of "css/base.css"
+  "../images/logo.png" instead of "images/logo.png"
+  This is called a RELATIVE PATH — it navigates from the
+  current file's location, not from the website root.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>The Market of Donations | Inova Palavra</title>
+  <!-- Article pages use a static title — no data-i18n needed here
+       since the article title is the same concept in both languages. -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- "../css/" — go up one folder (out of /articles/) then into /css/ -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/desktop.css">
   <link rel="stylesheet" href="../css/mobile.css">
 </head>
 <body>
 
+  <!-- HEADER — nav links use "../" paths to go back to the root pages -->
   <header>
     <div class="container header-content">
       <a href="../index.html" class="brand">
+      <!-- "../index.html" goes up from /articles/ to the root, then to index.html -->
         <img src="../images/logo.png" alt="Inova Palavra Logo" class="logo">
         <span class="brand-name">Inova Palavra</span>
       </a>
@@ -26,6 +58,8 @@
       <nav>
         <button class="nav-close" aria-label="Fechar menu">&times;</button>
         <ul>
+          <!-- No class="active" on any link here because the current page
+               is an article — not one of the main nav sections. -->
           <li><a href="../index.html" data-i18n="nav-home">Home</a></li>
           <li><a href="../about.html" data-i18n="nav-about">About</a></li>
           <li><a href="../categories.html" data-i18n="nav-categories">Categories</a></li>
@@ -38,36 +72,72 @@
 
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
+    <!-- ARTICLE HERO — title and author line -->
     <section class="hero-section" style="padding: 80px 0 40px;">
+    <!-- Inline style overrides the default hero padding for article pages.
+         WHY: The standard hero has 100px top padding. For articles, 80px
+         is enough — the title is shorter and simpler than the homepage hero. -->
       <div class="container">
         <h1 data-i18n="art1-title" style="max-width: 900px; margin: 0 auto;">The Market of Donations</h1>
+        <!-- max-width: 900px prevents very long titles from stretching full width.
+             margin: 0 auto centres it within the container. -->
+
         <p class="meta" style="text-align: center; margin-top: 20px;">
           <span data-i18n="art-author">By Cardeal Felisberto</span> | 2026
+          <!-- <span> is an inline element — used here to wrap only the
+               author's name for translation, while "| 2026" stays as-is. -->
         </p>
       </div>
     </section>
 
-    <article class="chronicle container">
 
+    <!-- ARTICLE BODY (CHRONICLE) -->
+    <article class="chronicle container">
+    <!-- .chronicle: reading-optimised layout (max-width:800px, large font).
+         .container: centres the content.
+         <article> is semantic HTML5 — signals to browsers and search engines
+         that this element contains a self-contained piece of writing. -->
+
+
+      <!-- FULL-WIDTH TOP IMAGE -->
       <figure class="article-top-image">
+      <!-- <figure> is the semantic HTML5 wrapper for images with captions.
+           Even without a <figcaption>, using <figure> is correct practice
+           because it semantically groups the image with its context. -->
         <img src="../images/market-donations.jpg" alt="Market scene with donated clothes">
+        <!-- alt text is critical for:
+             1. Screen readers (accessibility)
+             2. SEO — search engines read alt text
+             3. Display when image fails to load -->
       </figure>
 
+
+      <!-- ARTICLE PARAGRAPHS — all translatable via data-i18n -->
       <p data-i18n="art1-p1">Across Mozambique — from Maputo to Nampula — markets overflow with second-hand clothes imported from Europe and America. What should symbolize solidarity has been transformed into a business model. Donations meant to alleviate poverty have become the raw material of a trade that profits from desperation.</p>
 
       <p data-i18n="art1-p2">This reality is a national wound. In every market, the same paradox unfolds: the poor buy because they have no alternative, while traders see opportunity in every bundle of discarded clothing. When does solidarity end, and when does exploitation begin?</p>
 
       <p data-i18n="art1-p3">This trade exposes the cruel logic of global inequality. Poverty itself becomes a market. Dignity is negotiated at the lowest possible price. Clothes are not just fabric; they are symbols of a system that converts compassion into profit.</p>
 
+
+      <!-- BLOCKQUOTE — highlights a key quote from the article.
+           Styled with a green left border and Cormorant Garamond in italic.
+           Gives the article a literary, editorial character. -->
       <blockquote data-i18n="art1-quote">
         "Charity that becomes business ceases to be charity. The true gesture of solidarity is the one that liberates."
       </blockquote>
 
+
       <p data-i18n="art1-p4">The real critique is against the global machinery that turns charity into commerce. Mozambique has become the final destination of a cycle where generosity is corrupted and dependence is perpetuated. The poor remain poor, only clothed in the discarded dignity of others.</p>
 
     </article>
+    <!-- .chronicle has a ::after clearfix in CSS to wrap around any floated images -->
+
   </main>
+
 
   <footer>
     <div class="container">
@@ -76,6 +146,12 @@
     </div>
   </footer>
 
+  <!-- Script path also uses "../" to go up from /articles/ to find /js/ -->
   <script src="../js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

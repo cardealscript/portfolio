@@ -1,32 +1,65 @@
-/* ================================================
-   INOVA PALAVRA — MOBILE.CSS
-   Estilos específicos para ecrãs <= 768px
-   ================================================ */
+/* ============================================================
+   Hello, World! 👋
+   My name is Cardeal Felisberto — frontend developer from
+   Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+   at BYU.
 
+   This is mobile.css — styles that apply ONLY on screens
+   768px wide or narrower (smartphones and small tablets).
+
+   This file handles the mobile hamburger menu, the slide-in
+   navigation panel, single-column card layouts, and all the
+   adjustments that make the site feel natural on a small screen.
+
+   Every detail here was crafted with care and tested on a
+   real device from Maputo, Mozambique.
+   ============================================================ */
+
+
+/* ============================================================
+   SECTION 1 — MEDIA QUERY WRAPPER
+   ============================================================
+   @media (max-width: 768px) means:
+   "Apply these styles ONLY if the screen is 768px wide or less."
+
+   This is the mobile breakpoint. Above 768px, desktop.css rules.
+   ============================================================ */
 @media (max-width: 768px) {
 
-  /* ================================
-     HAMBÚRGUER — visível em mobile
-     ================================ */
+  /* ============================================================
+     HAMBURGER BUTTON — Visible on mobile
+     ============================================================
+     WHY: On small screens, there is no room to show all nav
+     links side by side. The hamburger button (☰) is the
+     standard mobile pattern — one tap shows/hides the menu.
+
+     HOW: display:flex makes it a flex container so the three
+     span lines stack vertically with equal gaps.
+
+     ACCESSIBILITY:
+     - min-width/min-height: 44px follows Apple and Google's
+       minimum touch target size guidelines. Fingers are not
+       precise like mouse cursors — targets must be large enough
+       to tap comfortably without accidentally hitting neighbours.
+     ============================================================ */
   .hamburger {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  /* Stack the three lines vertically */
     justify-content: center;
-    gap: 5px;
+    gap: 5px;                /* Space between the three lines */
     width: 40px;
     height: 40px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 6px;
-    /* z-index alto para ficar sempre por cima */
-    z-index: 300;
-    flex-shrink: 0;
-    /* Área de toque mínima recomendada pela Apple/Google */
-    min-width: 44px;
+    z-index: 300;            /* Always on top — above the nav panel and overlay */
+    flex-shrink: 0;          /* Prevent shrinking when header space is tight */
+    min-width: 44px;         /* Minimum touch target — Apple/Google accessibility guideline */
     min-height: 44px;
   }
 
+  /* Each of the three horizontal lines of the hamburger icon */
   .hamburger span {
     display: block;
     width: 22px;
@@ -34,79 +67,105 @@
     background: var(--color-dark);
     border-radius: 2px;
     transition: var(--transition);
-    transform-origin: center;
+    transform-origin: center; /* Animation rotates from the centre of each line */
   }
 
-  /* Quando o menu está aberto, esconde o hambúrguer
-     (o X dentro do nav já trata de fechar) */
+  /* When the menu is open, hide the hamburger icon */
+  /* WHY: The × close button inside the nav takes over closing duty.
+     Having both visible at once would be confusing and cluttered. */
   .hamburger.open {
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none; /* Prevents accidental clicks while invisible */
   }
 
-  /* ================================
-     HEADER — linha única em mobile
-     ================================ */
+
+  /* ============================================================
+     HEADER — Single row layout on mobile
+     ============================================================
+     WHY: On desktop, the header uses space-between which
+     already creates a left/right split. On mobile we reinforce
+     this to make sure the logo and hamburger stay on one row.
+     ============================================================ */
   .header-content {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  /* ================================
-     MENU DESLIZANTE
-     ================================ */
+
+  /* ============================================================
+     MOBILE NAV PANEL — Slide in from the right
+     ============================================================
+     WHY: On mobile there is not enough horizontal space to show
+     all nav links. A slide-in panel (also called a "drawer")
+     is the standard pattern — it appears on demand and covers
+     part of the screen.
+
+     HOW:
+     - position:fixed makes the panel float above all content
+     - right:-100% positions it completely off-screen to the right
+     - When JavaScript adds class 'open', right changes to 0
+     - The CSS transition animates this change smoothly
+
+     z-index:200 puts it above the overlay (z-index:99) so the
+     links are never blocked by the dark background layer.
+
+     overflow-y:auto allows scrolling inside the nav if there
+     are many links. overflow-x:hidden prevents any horizontal
+     overflow inside the panel.
+     ============================================================ */
   nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
+    right: -100%;            /* Hidden off-screen to the right by default */
+    width: 80%;              /* Takes 80% of the screen width when open */
+    max-width: 300px;        /* Never wider than 300px on larger mobile screens */
+    height: 100vh;           /* Full viewport height — top to bottom */
     background: #fff;
-    /* ACIMA do overlay (150) e do hamburger */
-    z-index: 200;
-    padding: 80px 32px 60px;
-    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
-    overflow-y: auto;
+    z-index: 200;            /* Above overlay (99), above hamburger (300 when closed) */
+    padding: 80px 32px 60px; /* Top padding creates space below the × close button */
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth slide animation */
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12); /* Shadow on the left edge of the panel */
+    overflow-y: auto;        /* Scroll if nav content is taller than the screen */
     overflow-x: hidden;
   }
 
+  /* When JavaScript adds 'open' class, the panel slides into view */
   nav.open {
-    right: 0;
+    right: 0; /* Slides from right:-100% to right:0 — animated by the transition */
   }
 
+  /* Vertical stacked list — links appear one below the other */
   nav ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically (desktop uses row) */
     list-style: none;
     align-items: flex-start;
     gap: 0;
   }
 
+  /* Each list item fills the full nav width with a divider line */
   nav ul li {
     width: 100%;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border); /* Subtle separator between links */
   }
 
-  /* Último item (botão língua) sem linha */
+  /* Last item (language button) — no divider, extra spacing above */
   nav ul li:last-child {
     border-bottom: none;
     padding-top: 24px;
   }
 
+  /* Mobile nav link styles — large touch targets */
   nav a {
-    display: block;
+    display: flex;           /* Flex to enable align-items for vertical centering */
+    align-items: center;
     padding: 16px 0;
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--color-dark);
     text-decoration: none;
-    /* Área de toque generosa */
-    min-height: 52px;
-    display: flex;
-    align-items: center;
+    min-height: 52px;        /* Large touch target — 44px minimum, 52px is comfortable */
   }
 
   nav a:hover,
@@ -114,12 +173,12 @@
     color: var(--color-primary);
   }
 
-  /* Remove o underline animado em mobile */
+  /* Remove the animated underline — not needed on mobile tap targets */
   nav a::after {
     display: none;
   }
 
-  /* Botão língua: largura total em mobile */
+  /* Language button fills the full nav width on mobile */
   .lang-btn {
     width: 100%;
     padding: 14px;
@@ -128,14 +187,23 @@
     font-size: 0.9rem;
   }
 
-  /* ================================
-     BOTÃO FECHAR (X) dentro do nav
-     ================================ */
+
+  /* ============================================================
+     CLOSE BUTTON (×) — Inside the nav panel
+     ============================================================
+     WHY: When the hamburger disappears (opacity:0), the user
+     needs a way to close the menu. The × button sits inside
+     the nav panel at the top-right corner.
+
+     HOW: position:absolute positions it relative to the nav
+     panel (which has position:fixed). The large min-width/height
+     ensures a comfortable touch target.
+     ============================================================ */
   .nav-close {
-    display: flex !important;
+    display: flex !important; /* Override any desktop display:none */
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: absolute;  /* Positioned relative to the nav panel */
     top: 20px;
     right: 16px;
     width: 44px;
@@ -146,87 +214,119 @@
     border: none;
     cursor: pointer;
     color: var(--color-dark);
-    z-index: 210;
-    /* Área de toque mínima */
+    z-index: 210;        /* Above the nav panel (200) to remain clickable */
     min-width: 44px;
     min-height: 44px;
   }
 
-  /* ================================
-     HERO
-     ================================ */
+
+  /* ============================================================
+     HERO SECTION — Adjusted for mobile
+     ============================================================ */
   .hero-section {
-    padding: 60px 0 40px;
+    padding: 60px 0 40px; /* Less padding than desktop — smaller screen */
   }
 
   .hero-section h1 {
-    font-size: 2.2rem;
+    font-size: 2.2rem;    /* Smaller than desktop (3.5rem) — fits mobile width */
     letter-spacing: -0.5px;
   }
 
   .hero-section p {
-    font-size: 1rem;
+    font-size: 1rem;      /* Smaller paragraph text on mobile */
   }
 
-  /* ================================
-     CARDS — coluna única
-     ================================ */
+
+  /* ============================================================
+     CARDS — Single column on mobile
+     ============================================================
+     WHY: Multiple columns don't work on narrow screens — cards
+     become too small to read comfortably. A single column
+     (1fr) stacks all cards vertically.
+     ============================================================ */
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* One full-width column instead of auto-fit grid */
   }
 
   .card {
-    padding: 28px 24px;
+    padding: 28px 24px; /* Less padding than desktop — saves space */
   }
 
   .category-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Same — single column for category cards */
   }
 
-  /* ================================
-     ABOUT — valores em coluna
-     ================================ */
+
+  /* ============================================================
+     ABOUT — Values grid collapses to single column
+     ============================================================
+     WHY: Three columns (Clarity / Justice / Courage) are
+     unreadably narrow on mobile. One column is much clearer.
+     ============================================================ */
   .values-grid {
     grid-template-columns: 1fr;
   }
 
-  /* ================================
-     CONTACTO
-     ================================ */
+
+  /* ============================================================
+     CONTACT FORM — Less padding on mobile
+     ============================================================ */
   .contact-card {
-    padding: 32px 20px;
+    padding: 32px 20px; /* Reduce the generous desktop padding for smaller screens */
   }
 
-  /* ================================
-     ARTIGOS
-     ================================ */
+
+  /* ============================================================
+     ARTICLE IMAGES — Full width on mobile
+     ============================================================
+     WHY: float:left and float:right don't work well on narrow
+     screens — the image takes too much space and leaves almost
+     no room for text. On mobile we remove the float entirely
+     and make images full width, stacked above the text.
+
+     'float: none' cancels the desktop float.
+     'width: 100%' makes the image span the full article width.
+     ============================================================ */
   .small-image-left,
   .small-image-right {
-    float: none;
-    width: 100%;
-    margin: 0 0 24px 0;
+    float: none;           /* Cancel the desktop float layout */
+    width: 100%;           /* Full width — no text wrapping */
+    margin: 0 0 24px 0;   /* Only space below the image */
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
+  /* Shorter article header image on mobile */
   .article-top-image img {
-    height: 220px;
+    height: 220px; /* Reduced from 400px (desktop) — saves vertical space */
   }
 
+  /* Smaller article title on mobile */
   .chronicle h1 {
-    font-size: 2rem;
+    font-size: 2rem; /* Reduced from 3rem — fits mobile width */
   }
 
+  /* Smaller blockquote on mobile */
   blockquote {
-    font-size: 1.3rem;
-    padding-left: 20px;
-    margin: 35px 0;
+    font-size: 1.3rem;   /* Reduced from 1.8rem */
+    padding-left: 20px;  /* Reduced from 30px */
+    margin: 35px 0;      /* Reduced from 50px */
   }
 
-  /* ================================
-     FOOTER — sem espaço extra
-     ================================ */
+
+  /* ============================================================
+     FOOTER — Reduced padding on mobile
+     ============================================================ */
   footer {
-    padding: 40px 0;
+    padding: 40px 0; /* Reduced from 60px — more appropriate for mobile */
   }
-}
+
+} /* End of @media (max-width: 768px) */
+
+
+/* ============================================================
+
+   Typed with love by Cardeal Felisberto 🇲🇿
+   I love to code.
+
+   ============================================================ */

@@ -1,3 +1,23 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is justice-without-defense.html — an article page for
+  "Justice Without Defense" on Inova Palavra.
+
+  This article explores how poverty and the lack of legal
+  representation lead innocent people in Mozambique to accept
+  guilt in court rather than fight a system they cannot afford.
+
+  NOTE: The article image uses class="small-image-right" which
+  floats it to the RIGHT on desktop (text wraps on its left).
+  On mobile, mobile.css resets float:none and makes it full-width.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +58,9 @@
 
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
     <section class="hero-section" style="padding: 80px 0 40px;">
       <div class="container">
         <h1 data-i18n="art2-title" style="max-width: 800px; margin: 0 auto;">Justice Without Defense</h1>
@@ -48,8 +70,14 @@
       </div>
     </section>
 
+
     <article class="chronicle container">
 
+      <!-- FLOATED IMAGE — RIGHT SIDE (desktop only)
+           desktop.css: float:right; width:300px; margin: 0 0 20px 30px
+           mobile.css: float:none; width:100%; margin: 0 0 24px 0
+           The image floats to the right and text wraps on its left.
+           This creates a classic editorial/magazine layout on desktop. -->
       <img src="../images/justice-without-defense.webp" alt="Justice" class="small-image-right">
 
       <p data-i18n="art2-p1">In Mozambique, justice often arrives without defense. In courtrooms from Maputo to provincial towns, the poor stand accused with no lawyer by their side. They face judges, prosecutors, and a system that speaks a language they cannot understand.</p>
@@ -58,6 +86,10 @@
 
       <p data-i18n="art2-p3">Every day, men and women are condemned not because of what they did, but because of what they lacked: a lawyer, a voice, a chance. The justice system, instead of protecting the vulnerable, becomes a machine that crushes them.</p>
 
+      <!-- BLOCKQUOTE — key statement pulled from the article body.
+           In journalism and editorial design, a blockquote (or "pull quote")
+           highlights the most powerful line — it catches the eye and
+           gives casual readers a reason to read the full piece. -->
       <blockquote data-i18n="art2-quote">
         "A justice system that condemns without defense is not justice. It is violence carried out in the name of law."
       </blockquote>
@@ -67,7 +99,11 @@
       <p data-i18n="art2-p5">Justice without defense is not justice at all. It is punishment disguised as law. It is oppression disguised as order. And it is a reminder that in Mozambique, the poor are not only economically excluded — they are legally abandoned.</p>
 
     </article>
+    <!-- .chronicle::after clearfix ensures the container wraps around
+         the right-floated image completely -->
+
   </main>
+
 
   <footer>
     <div class="container">
@@ -77,5 +113,10 @@
   </footer>
 
   <script src="../js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

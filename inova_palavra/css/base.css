@@ -1,83 +1,169 @@
-/* ================================================
-   INOVA PALAVRA — BASE.CSS
-   Variáveis, reset, estilos partilhados
-   ================================================ */
+/* ============================================================
+   Hello, World! 👋
+   My name is Cardeal Felisberto — frontend developer from
+   Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+   at BYU.
 
+   This is base.css — the foundation of Inova Palavra.
+   It contains global variables, CSS reset, and all shared
+   styles used across every single page of the platform.
+   Think of this file as the DNA of the entire design system.
+
+   Every decision here was made with attention and purpose.
+   ============================================================ */
+
+
+/* ============================================================
+   SECTION 1 — GOOGLE FONTS IMPORT
+   ============================================================
+   WHY: Custom fonts make the design feel intentional and
+   unique. Browser default fonts look generic and unprofessional.
+
+   HOW: @import loads fonts from Google's servers before any
+   CSS is applied. We import two font families:
+
+   - Cormorant Garamond: An elegant serif font used for titles
+     and headings. It gives the platform a literary, editorial
+     feel — perfect for a writing platform.
+
+   - Inter: A clean, modern sans-serif used for body text,
+     navigation, and UI elements. Highly readable at small sizes.
+
+   'display=swap' means: show a system font while the custom
+   font loads, then swap it in. Prevents invisible text.
+   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,700&family=Inter:wght@300;400;600&display=swap');
 
-/* ================================
-   VARIÁVEIS GLOBAIS
-   ================================ */
+
+/* ============================================================
+   SECTION 2 — CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   ============================================================
+   WHY: Variables let us define a value ONCE and reuse it
+   everywhere. Change --color-primary in one place and it
+   updates across the entire website automatically.
+
+   HOW: :root is the highest-level element in CSS — variables
+   defined here are available to every element on the page.
+   Access them with var(--variable-name).
+   ============================================================ */
 :root {
-  --color-primary: #1FAF38;
-  --color-secondary: #C41212;
-  --color-dark: #121212;
-  --color-light: #fbfbfb;
-  --color-gray: #6e6e73;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --font-main: 'Inter', sans-serif;
-  --font-title: 'Cormorant Garamond', serif;
+  --color-primary:   #1FAF38;            /* Mozambique flag green — main accent colour */
+  --color-secondary: #C41212;            /* Deep red — used for highlights and links */
+  --color-dark:      #121212;            /* Near-black — main text colour */
+  --color-light:     #fbfbfb;            /* Off-white — page background */
+  --color-gray:      #6e6e73;            /* Medium gray — secondary/meta text */
+  --color-border:    rgba(0, 0, 0, 0.1); /* Subtle transparent border for dividers */
+
+  --font-main:  'Inter', sans-serif;           /* Body text and UI elements */
+  --font-title: 'Cormorant Garamond', serif;   /* Headings, titles, blockquotes */
+
+  /* Reused across all hover/transition effects.
+     cubic-bezier(0.4, 0, 0.2, 1) = Google Material Design easing:
+     smooth acceleration at start, deceleration at end */
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Defined once here, used in both the header height AND
+     body padding-top — keeps them always in sync */
   --header-height: 70px;
 }
 
-/* ================================
-   RESET
-   ================================ */
+
+/* ============================================================
+   SECTION 3 — CSS RESET
+   ============================================================
+   WHY: Every browser has its own default styles (margins,
+   paddings, font sizes). These are inconsistent across Chrome,
+   Firefox, Safari. A reset removes all defaults so we start
+   from a clean, predictable baseline on every browser.
+
+   * targets EVERY element. ::before and ::after target the
+   CSS pseudo-elements we use for decorative effects.
+   ============================================================ */
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+  margin: 0;                            /* Remove all browser default margins */
+  padding: 0;                           /* Remove all browser default paddings */
+  box-sizing: border-box;               /* Include padding/border in element's total width */
+                                        /* Without this, padding ADDS to width → layout bugs */
+  -webkit-font-smoothing: antialiased;  /* Sharper font rendering on Mac/iOS */
 }
 
+
+/* ============================================================
+   SECTION 4 — HTML AND BODY
+   ============================================================ */
 html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  /* Evita salto quando overflow muda */
-  scrollbar-gutter: stable;
+  scroll-behavior: smooth;  /* Smooth animation when clicking anchor links (#section) */
+  overflow-x: hidden;       /* Prevent horizontal scrollbar from overflowing elements */
+  scrollbar-gutter: stable; /* Reserve scrollbar space so layout doesn't jump between pages */
 }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  line-height: 1.6;
-  transition: opacity 0.3s ease;
-  /* Empurra o conteúdo para baixo do header fixo */
-  padding-top: var(--header-height);
+  font-family: var(--font-main);         /* Inter as default font for all page text */
+  background-color: var(--color-light);  /* Off-white background — easier on the eyes than pure white */
+  color: var(--color-dark);              /* Near-black default text colour */
+  line-height: 1.6;                      /* Comfortable line spacing for reading */
+  transition: opacity 0.3s ease;         /* Enables the language fade effect in script.js */
+  padding-top: var(--header-height);     /* Push content DOWN by 70px to avoid being hidden */
+                                         /* behind the fixed header (which floats above the page) */
 }
 
+
+/* ============================================================
+   SECTION 5 — IMAGES
+   ============================================================ */
 img {
-  max-width: 100%;
-  display: block;
+  max-width: 100%; /* Images never overflow their container — key for responsive design */
+  display: block;  /* Removes the invisible 4px gap below inline images */
+                   /* (inline images sit on a text baseline, creating a small gap) */
 }
 
+
+/* ============================================================
+   SECTION 6 — CONTAINER
+   ============================================================
+   WHY: Limits content width for comfortable reading and
+   centres everything horizontally on large screens.
+
+   90% width = 5% breathing room on each side on mobile.
+   max-width 1100px = content won't stretch too wide on
+   large monitors. margin 0 auto = centred.
+   ============================================================ */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* ================================
-   HEADER
-   ================================ */
+
+/* ============================================================
+   SECTION 7 — HEADER
+   ============================================================
+   WHY: A fixed header stays visible during scroll, giving
+   users constant access to navigation — standard UX pattern
+   for content-heavy websites.
+
+   position:fixed removes the header from document flow and
+   pins it to the viewport. z-index:100 ensures it floats
+   above all other page content.
+   ============================================================ */
 header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  position: fixed;
+  background: rgba(255, 255, 255, 0.95); /* 95% opaque — slightly see-through */
+  backdrop-filter: blur(20px);           /* Frosted glass effect — blurs content behind header */
+  -webkit-backdrop-filter: blur(20px);   /* Same for Safari (needs -webkit- prefix) */
+  position: fixed;    /* Pinned to viewport — stays visible during scroll */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 100;       /* Above regular page content */
   border-bottom: 1px solid var(--color-border);
   padding: 15px 0;
-  height: var(--header-height);
+  height: var(--header-height); /* Matches the body padding-top value */
 }
 
+/* Thin decorative gradient stripe at the top of the header */
+/* Green → Red, matching the Mozambique flag colours */
 header::before {
-  content: '';
+  content: '';        /* Required for pseudo-elements — even if empty */
   display: block;
   height: 3px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
@@ -89,102 +175,120 @@ header::before {
 
 .header-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Logo pushed left, nav pushed right */
+  align-items: center;            /* Vertically centred */
   height: 100%;
 }
 
+
+/* ============================================================
+   SECTION 8 — BRAND / LOGO
+   ============================================================ */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px;            /* Space between logo image and brand name text */
   text-decoration: none;
-  flex-shrink: 0;
+  flex-shrink: 0;       /* Prevents the brand from shrinking when space is tight */
 }
 
 .logo {
   height: 40px;
-  width: auto;
+  width: auto; /* Maintain aspect ratio — width adjusts automatically */
 }
 
 .brand-name {
   font-size: 1.4rem;
   font-weight: 600;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5px; /* Tight kerning — refined, modern look */
   color: var(--color-dark);
 }
 
-/* ================================
-   BOTÃO LÍNGUA
-   ================================ */
+
+/* ============================================================
+   SECTION 9 — LANGUAGE BUTTON
+   ============================================================
+   WHY: Switches all page text between English and Portuguese.
+   Styled as a pill-shaped button that stands out from the header.
+   z-index:1 ensures it is always clickable inside complex layouts.
+   ============================================================ */
 .lang-btn {
   background: var(--color-dark);
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 20px;    /* Pill shape */
+  cursor: pointer;        /* Hand cursor — signals the element is clickable */
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: var(--font-main);
+  font-family: var(--font-main); /* Buttons don't inherit font — must be set explicitly */
   transition: var(--transition);
-  /* Garante que é clicável */
   position: relative;
-  z-index: 1;
+  z-index: 1;             /* Always on top and clickable */
 }
 
 .lang-btn:hover {
   background: var(--color-primary);
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Subtle lift — interactive feedback */
 }
 
-/* ================================
-   OVERLAY — escondido por defeito
-   ================================ */
+
+/* ============================================================
+   SECTION 10 — MOBILE MENU OVERLAY
+   ============================================================
+   WHY: When the mobile nav opens, the dark overlay covers the
+   page behind the menu panel. It focuses attention and lets
+   users close the menu by tapping outside.
+
+   z-index:99 keeps it BELOW the nav panel (z-index:200)
+   so nav links are never blocked by the overlay.
+
+   'inset: 0' is shorthand for top/right/bottom/left all = 0
+   — makes the overlay cover the entire screen.
+   ============================================================ */
 .nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 150;
-  /* Garante que não interfere com cliques quando fechado */
-  pointer-events: none;
+  display: none;                   /* Hidden by default */
+  position: fixed;                 /* Covers viewport regardless of scroll position */
+  inset: 0;                        /* Fills the entire screen */
+  background: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+  z-index: 99;                     /* Below nav (200), above page content */
 }
 
 .nav-overlay.open {
-  display: block;
-  pointer-events: all;
+  display: block; /* JavaScript adds class 'open' to show the overlay */
 }
 
-/* ================================
-   HERO SECTION
-   ================================ */
+
+/* ============================================================
+   SECTION 11 — HERO SECTION
+   ============================================================ */
 .hero-section {
-  padding: 100px 0 60px;
+  padding: 100px 0 60px; /* Large top padding to clear the fixed header */
   text-align: center;
 }
 
 .hero-section h1 {
-  font-family: var(--font-title);
+  font-family: var(--font-title); /* Cormorant Garamond — literary, editorial impact */
   font-size: 3.5rem;
-  line-height: 1.1;
+  line-height: 1.1;               /* Tight line spacing for large headings */
   margin-bottom: 25px;
-  letter-spacing: -1px;
+  letter-spacing: -1px;           /* Tighter kerning — modern magazine style */
 }
 
 .hero-section p {
   font-size: 1.25rem;
   color: var(--color-gray);
-  max-width: 750px;
+  max-width: 750px;               /* Limits line length — easier to read */
   margin: 0 auto 40px;
-  font-weight: 300;
+  font-weight: 300;               /* Light weight contrasts with the bold heading */
 }
 
-/* ================================
-   BOTÕES
-   ================================ */
+
+/* ============================================================
+   SECTION 12 — BUTTONS
+   ============================================================ */
 .btn {
-  display: inline-block;
+  display: inline-block;  /* Allows padding on an anchor/link element */
   background: var(--color-primary);
   color: white;
   padding: 16px 35px;
@@ -193,7 +297,7 @@ header::before {
   font-weight: 600;
   font-size: 1rem;
   transition: var(--transition);
-  box-shadow: 0 10px 20px rgba(31, 175, 56, 0.2);
+  box-shadow: 0 10px 20px rgba(31, 175, 56, 0.2); /* Green glow matching button colour */
   border: none;
   cursor: pointer;
   font-family: var(--font-main);
@@ -201,31 +305,41 @@ header::before {
 
 .btn:hover {
   background: #168a2c;
-  transform: scale(1.05);
-  box-shadow: 0 15px 30px rgba(31, 175, 56, 0.3);
+  transform: scale(1.05);                          /* Slight grow on hover — tactile feel */
+  box-shadow: 0 15px 30px rgba(31, 175, 56, 0.3); /* Stronger glow */
 }
 
+/* Modifier: full-width button (used in contact form) */
 .btn-full {
   width: 100%;
   text-align: center;
   display: block;
 }
 
+/* Subtle text-only link — used for "Read More" on cards */
 .btn-small {
   text-decoration: none;
-  color: var(--color-secondary);
+  color: var(--color-secondary); /* Red — draws attention */
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
 }
 
 .btn-small:hover {
-  letter-spacing: 1px;
+  letter-spacing: 1px; /* Text spreads on hover — subtle animated effect */
 }
 
-/* ================================
-   CARDS / CRÓNICAS
-   ================================ */
+
+/* ============================================================
+   SECTION 13 — ARTICLE CARDS GRID
+   ============================================================
+   WHY: Cards present multiple articles in a scannable layout.
+   The hover animation (lift + coloured top stripe) invites
+   users to interact and explore.
+
+   CSS Grid with auto-fit + minmax creates a responsive layout
+   automatically: 1 column on mobile, 2-3 on larger screens.
+   ============================================================ */
 .chronicles {
   padding: 80px 0;
   background: #ffffff;
@@ -241,6 +355,8 @@ header::before {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* auto-fit: create as many columns as fit in the available space */
+  /* minmax(280px, 1fr): each column is at least 280px, grows equally */
   gap: 30px;
 }
 
@@ -250,16 +366,17 @@ header::before {
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.03);
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
+  position: relative; /* Required so ::after stripe positions inside the card */
+  overflow: hidden;   /* Clips ::after so it doesn't leak outside the card */
 }
 
+/* Animated top stripe — hidden (width:0) until hover */
 .card::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  width: 0;           /* Invisible by default — animates to 100% on hover */
   height: 3px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   border-radius: 20px 20px 0 0;
@@ -267,14 +384,14 @@ header::before {
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px);                    /* Lift effect */
   background: #fff;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);    /* Depth shadow */
   border-color: rgba(31, 175, 56, 0.25);
 }
 
 .card:hover::after {
-  width: 100%;
+  width: 100%; /* Stripe slides in from left to right */
 }
 
 .card h3 {
@@ -289,9 +406,10 @@ header::before {
   margin-bottom: 25px;
 }
 
-/* ================================
-   FOOTER
-   ================================ */
+
+/* ============================================================
+   SECTION 14 — FOOTER
+   ============================================================ */
 footer {
   background: var(--color-dark);
   color: white;
@@ -300,6 +418,7 @@ footer {
   position: relative;
 }
 
+/* Same gradient stripe as the header — visual bookending */
 footer::before {
   content: '';
   display: block;
@@ -320,39 +439,44 @@ footer p {
   margin-top: 10px;
   font-size: 0.75rem;
   opacity: 0.5;
-  text-transform: uppercase;
+  text-transform: uppercase; /* All caps — reads as secondary metadata */
   letter-spacing: 1px;
 }
 
-/* ================================
-   FORMULÁRIO
-   ================================ */
+
+/* ============================================================
+   SECTION 15 — CONTACT FORM INPUTS
+   ============================================================ */
 input, textarea {
   width: 100%;
   padding: 15px;
   margin-top: 5px;
   border: 1px solid #ddd;
   border-radius: 12px;
-  font-family: var(--font-main);
+  font-family: var(--font-main); /* Form elements don't inherit fonts — must set explicitly */
   background: #fff;
   transition: border-color 0.3s;
   font-size: 1rem;
 }
 
 input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
+  outline: none;                      /* Remove browser's default blue outline ring */
+  border-color: var(--color-primary); /* Replace with our brand green border */
 }
 
-/* ================================
-   ARTIGOS / CRÓNICAS
-   ================================ */
+
+/* ============================================================
+   SECTION 16 — ARTICLE / CHRONICLE READING LAYOUT
+   ============================================================
+   WHY: Long-form reading needs a narrower column (max 800px),
+   larger font, and generous line spacing for comfort.
+   ============================================================ */
 .chronicle {
-  max-width: 800px;
+  max-width: 800px;  /* Roughly 70 characters per line — optimal for reading */
   margin: 60px auto;
   padding: 0 20px;
   display: block;
-  overflow: hidden;
+  overflow: hidden;  /* Contains floated images so they don't escape the container */
   clear: both;
 }
 
@@ -367,53 +491,56 @@ input:focus, textarea:focus {
   color: var(--color-gray);
   font-size: 0.9rem;
   margin-bottom: 40px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border); /* Separator under author/date info */
   padding-bottom: 20px;
 }
 
 .chronicle p {
-  font-size: 1.2rem;
+  font-size: 1.2rem;   /* Larger than normal — optimised for long reading sessions */
   margin-bottom: 25px;
-  line-height: 1.8;
+  line-height: 1.8;    /* Very generous — reduces eye strain on long text */
   color: #333;
 }
 
 .article-top-image img {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: cover;   /* Crops the image to fill — no distortion */
   border-radius: 20px;
   margin-bottom: 40px;
 }
 
+/* Pull quote styling — highlights a key line from the article */
 blockquote {
   font-family: var(--font-title);
   font-size: 1.8rem;
   font-style: italic;
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-primary); /* Green left bar — visual anchor */
   padding-left: 30px;
   margin: 50px 0;
   color: var(--color-dark);
 }
 
+/* Clearfix — makes the chronicle container expand to wrap around floated images */
+/* Floated elements leave the document flow, so the parent would collapse without this */
 .chronicle::after {
   content: "";
   display: table;
-  clear: both;
+  clear: both; /* Forces parent to stretch past all floated children */
 }
 
-/* ================================
-   CATEGORIAS
-   ================================ */
+
+/* ============================================================
+   SECTION 17 — CATEGORIES PAGE
+   ============================================================ */
 .categories-container {
   padding: 60px 0 80px;
 }
 
 .category-label {
-  font-family: var(--font-main);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.14em;    /* Wide spacing — standard for uppercase labels */
   text-transform: uppercase;
   color: var(--color-primary);
   margin-bottom: 24px;
@@ -423,13 +550,14 @@ blockquote {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 60px; /* Space between each category group */
 }
 
+/* Animated underline on article title links */
 .category-cards .card h3 a {
   text-decoration: none;
   color: var(--color-dark);
-  position: relative;
+  position: relative; /* Needed for ::after underline positioning */
   display: inline;
   transition: color var(--transition);
 }
@@ -439,26 +567,20 @@ blockquote {
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 0;      /* Starts invisible */
   height: 1.5px;
   background: var(--color-primary);
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.category-cards .card h3 a:hover {
-  color: var(--color-primary);
-}
+.category-cards .card h3 a:hover { color: var(--color-primary); }
+.category-cards .card h3 a:hover::after { width: 100%; } /* Underline slides in */
 
-.category-cards .card h3 a:hover::after {
-  width: 100%;
-}
 
-/* ================================
-   ABOUT
-   ================================ */
-.about-main {
-  padding: 60px 0 80px;
-}
+/* ============================================================
+   SECTION 18 — ABOUT PAGE
+   ============================================================ */
+.about-main { padding: 60px 0 80px; }
 
 .content-wrapper {
   max-width: 740px;
@@ -473,12 +595,10 @@ blockquote {
   margin-top: 50px;
   margin-bottom: 16px;
   padding-left: 16px;
-  border-left: 3px solid var(--color-primary);
+  border-left: 3px solid var(--color-primary); /* Green vertical accent line */
 }
 
-.content-wrapper h2:first-child {
-  margin-top: 0;
-}
+.content-wrapper h2:first-child { margin-top: 0; }
 
 .content-wrapper p {
   font-size: 1.1rem;
@@ -486,14 +606,15 @@ blockquote {
   color: #3a3a3a;
 }
 
+/* Three-column values grid — Clarity / Justice / Courage */
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--color-border);
+  grid-template-columns: repeat(3, 1fr); /* Always 3 equal columns */
+  gap: 1px;                              /* Thin gap = visible grid lines */
+  background: var(--color-border);       /* The gap background becomes the border colour */
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  overflow: hidden;
+  overflow: hidden; /* Clips cards to rounded corners */
   margin-top: 50px;
 }
 
@@ -501,15 +622,13 @@ blockquote {
   background: #f5f5f7;
   padding: 32px 28px;
   text-align: center;
-  border-radius: 0;
+  border-radius: 0; /* Container handles rounding */
   border: none;
 }
 
-.values-grid .card::after {
-  display: none;
-}
+.values-grid .card::after { display: none; }  /* No animated stripe on values */
 
-.values-grid .card:hover {
+.values-grid .card:hover {                     /* Subtle hover — not interactive */
   background: #fff;
   transform: none;
   box-shadow: none;
@@ -530,12 +649,11 @@ blockquote {
   margin-bottom: 0;
 }
 
-/* ================================
-   CONTACTO
-   ================================ */
-.contact-container {
-  padding: 60px 0 80px;
-}
+
+/* ============================================================
+   SECTION 19 — CONTACT PAGE
+   ============================================================ */
+.contact-container { padding: 60px 0 80px; }
 
 .contact-card {
   max-width: 600px;
@@ -543,12 +661,10 @@ blockquote {
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 56px 64px;
+  padding: 56px 64px; /* Generous padding — open, breathable feel */
 }
 
-.form-group {
-  margin-bottom: 28px;
-}
+.form-group { margin-bottom: 28px; }
 
 .form-group label {
   display: block;
@@ -559,3 +675,11 @@ blockquote {
   color: var(--color-gray);
   margin-bottom: 8px;
 }
+
+
+/* ============================================================
+
+   Typed with love by Cardeal Felisberto 🇲🇿
+   I love to code.
+
+   ============================================================ */

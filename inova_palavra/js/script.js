@@ -58,18 +58,25 @@ const translations = {
     "art2-p1": "In Mozambique, justice often arrives without defense. In courtrooms from Maputo to provincial towns, the poor stand accused with no lawyer by their side.",
     "art2-p2": "It is a cruel paradox: the Constitution promises equality before the law, yet in practice, justice is a privilege reserved for those who can afford it.",
     "art2-quote": "\"A justice system that condemns without defense is not justice. It is violence carried out in the name of law.\"",
-    "art2-p4": "Justice without defense is not justice at all. It is punishment disguised as law.",
+    "art2-p3": "Every day, men and women are condemned not because of what they did, but because of what they lacked: a lawyer, a voice, a chance. The justice system, instead of protecting the vulnerable, becomes a machine that crushes them.",
+    "art2-p4": "The courtroom becomes a theater where guilt is scripted in advance. This is not justice — it is survival. For the poor, the choice is between fighting a battle they cannot win or accepting guilt to shorten their suffering.",
+    "art2-p5": "Justice without defense is not justice at all. It is punishment disguised as law. It is oppression disguised as order. In Mozambique, the poor are not only economically excluded — they are legally abandoned.",
     "card3-title": "Youth Without Future",
     "card3-desc": "A reflection on the frustration of young graduates facing unemployment and closed opportunities.",
     "art3-p1": "In Mozambique, the youth carry diplomas but no future. Thousands of young graduates wander the streets with degrees in hand, searching for jobs that do not exist.",
     "art3-p2": "Families sacrifice everything to send their children to school, believing education will break the cycle of poverty.",
+    "art3-p3": "Everywhere, the signs of despair are visible. Young graduates sell phone credit on the streets or remain idle at home. Their knowledge is wasted, their energy suffocated, and their dignity eroded. Mozambique's youth are not without talent — they are without opportunity.",
     "art3-quote": "\"A nation that abandons its youth abandons its future. Education without opportunity is not hope — it is betrayal.\"",
-    "art3-p4": "A country that educates its youth but refuses to employ them is a country that kills its own future.",
+    "art3-p4": "This is not just an economic failure; it is a moral betrayal. A country that educates its youth but refuses to employ them is a country that kills its own future.",
+    "art3-p5": "Mozambique must decide whether to invest in its young or to bury its future under the rubble of neglect. A system that allows corruption to dictate opportunity while talent is ignored is a system that has already failed.",
     "card4-title": "How to Tell the Truth to a Child",
     "card4-desc": "A mother's hidden secret becomes a moral trial between silence and redemption, showing that love survives.",
-    "art4-p1": "There are secrets that mothers carry in silence, secrets so heavy that they bend the soul. Among them lies a painful confession.",
+    "art4-p1": "There are secrets that mothers carry in silence, secrets so heavy that they bend the soul. Among them lies one of the most painful confessions: that at some moment of despair, she attempted to end the life of the very child she now embraces.",
+    "art4-p2": "This dilemma is the battlefield between conscience and silence. For years, the mother lives with this secret chained within her. Each smile, each achievement of the child carries not only pride, but also the haunting echo of a past decision.",
+    "art4-p3": "Why do women find themselves in such places? Often, it is not out of hatred, but fear, poverty, or loneliness. A pregnancy can arrive like a storm, and in that fragile moment, a woman may believe that ending it is her only escape.",
     "art4-quote": "\"Truth is not only a burden to be carried but also a bridge to healing. When a mother finds the courage to reveal the truth, space opens for reconciliation.\"",
-    "art4-p4": "In the end, what matters most is that love triumphed over despair. The child is alive and loved."
+    "art4-p4": "Should the truth be told? Speaking means risking rejection, but silence is its own prison. To confess requires rare courage — the courage to be misunderstood in the name of truth. But truth, when spoken with love, has the power to heal.",
+    "art4-p5": "In the end, what matters most is that love triumphed over despair. The child is here, alive and loved. Telling the truth is not about reliving shame, but transforming guilt into a testimony of resilience and grace."
   },
   pt: {
     "nav-home": "Início",
@@ -124,16 +131,22 @@ const translations = {
     "art2-p1": "Em Moçambique, a justiça chega muitas vezes sem defesa. Nos tribunais, de Maputo às cidades provinciais, os pobres sentam-se no banco dos réus sem um advogado ao seu lado.",
     "art2-p2": "É um paradoxo cruel: a Constituição promete igualdade perante a lei, mas a justiça é um privilégio reservado aos que podem pagar.",
     "art2-quote": "\"Um sistema de justiça que condena sem defesa não é justiça. É violência exercida em nome da lei.\"",
-    "art2-p4": "Justiça sem defesa não é justiça de todo. É castigo disfarçado de lei.",
+    "art2-p3": "Todos os dias, homens e mulheres são condenados não pelo que fizeram, mas pelo que lhes faltou: um advogado, uma voz, uma oportunidade. O sistema judicial, em vez de proteger os vulneráveis, torna-se numa máquina que os esmaga.",
+    "art2-p4": "O tribunal torna-se um teatro onde a culpa é escrita com antecedência. Para os pobres, a escolha é entre travar uma batalha que não podem vencer ou aceitar a culpa para encurtar o sofrimento.",
+    "art2-p5": "Justiça sem defesa não é justiça de todo. É castigo disfarçado de lei. É opressão disfarçada de ordem. Em Moçambique, os pobres não são apenas excluídos economicamente — são abandonados legalmente.",
     "card3-title": "Juventude Sem Futuro",
     "card3-desc": "Uma reflexão sobre a frustração de jovens licenciados que enfrentam o desemprego e a falta de oportunidades.",
     "art3-p1": "Em Moçambique, os jovens carregam diplomas, mas não têm futuro. Milhares de graduados vagueiam pelas ruas com certificados na mão, à procura de empregos que não existem.",
     "art3-p2": "As famílias sacrificam tudo para educar os filhos, acreditando que a escola quebrará o ciclo da pobreza.",
+    "art3-p3": "Em todo o lado, os sinais do desespero são visíveis. Jovens licenciados vendem crédito de telemóvel nas ruas ou permanecem ociosos em casa. O seu conhecimento é desperdiçado, a sua energia sufocada e a sua dignidade erodida. A juventude de Moçambique não é sem talento — é sem oportunidade.",
     "art3-quote": "\"Uma nação que abandona a sua juventude abandona o seu futuro. Educação sem oportunidade não é esperança — é traição.\"",
-    "art3-p4": "Um país que educa os seus jovens mas se recusa a empregá-los é um país que mata o seu próprio futuro.",
+    "art3-p4": "Não é apenas um fracasso económico; é uma traição moral. Um país que educa os seus jovens mas se recusa a empregá-los é um país que mata o seu próprio futuro.",
+    "art3-p5": "Moçambique deve decidir se investe nos seus jovens ou enterra o seu futuro. Um sistema que permite que a corrupção dite a oportunidade enquanto o talento é ignorado é um sistema que já falhou.",
     "card4-title": "Como Dizer a Verdade a uma Criança",
     "card4-desc": "O segredo escondido de uma mãe torna-se um julgamento moral entre o silêncio e a redenção, mostrando que o amor sobrevive.",
-    "art4-p1": "Há segredos que as mães carregam em silêncio, segredos tão pesados que curvam a alma. Entre eles reside uma confissão dolorosa.",
+    "art4-p1": "Há segredos que as mães carregam em silêncio, segredos tão pesados que curvam a alma. Entre eles está uma das confissões mais dolorosas: que em algum momento de desespero, ela tentou acabar com a vida do próprio filho que agora abraça.",
+    "art4-p2": "Este dilema é o campo de batalha entre a consciência e o silêncio. Durante anos, a mãe vive com este segredo acorrentado dentro de si. Cada sorriso, cada conquista do filho carrega não só orgulho, mas também o eco assombroso de uma decisão passada.",
+    "art4-p3": "Por que razão as mulheres se encontram em tais lugares? Muitas vezes, não é por ódio, mas por medo, pobreza ou solidão. Uma gravidez pode chegar como uma tempestade e, nesse momento frágil, uma mulher pode acreditar que acabar com ela é a sua única saída.",
     "art4-quote": "\"A verdade não é apenas um fardo, mas também uma ponte para a cura. Quando uma mãe encontra coragem para revelar a verdade, abre-se espaço para a reconciliação.\"",
     "art4-p4": "No final, o que importa é que o amor triunfou sobre o desespero. A criança está viva e é amada."
   }
@@ -264,8 +277,6 @@ function initHamburger() {
   // FIX: Botão de língua — não fechar o menu ao traduzir
   const langBtn = nav.querySelector('#lang-btn');
   if (langBtn) {
-    // Remove qualquer listener antigo recriando o elemento
-    langBtn.removeEventListener('click', toggleLanguage);
     langBtn.addEventListener('click', function (e) {
       e.stopPropagation(); // Não deixa o clique chegar ao overlay
       toggleLanguage();
@@ -284,10 +295,9 @@ function initHamburger() {
    INICIALIZAÇÃO
    ================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Ligar botão de língua (fora do nav, em desktop)
-  const langBtn = document.getElementById('lang-btn');
-  if (langBtn) langBtn.addEventListener('click', toggleLanguage);
-
   updateContent();
   initHamburger();
+  // NOTE: lang-btn listener is handled inside initHamburger()
+  // Do NOT add another listener here — it would fire toggleLanguage TWICE
+  // (once to PT, immediately back to EN = appears to do nothing)
 });

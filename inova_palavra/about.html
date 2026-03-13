@@ -1,15 +1,50 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is about.html — the ABOUT PAGE of Inova Palavra.
+
+  This page tells the story behind the platform:
+  - Our Story: why Inova Palavra was created
+  - Mission: what we aim to achieve
+  - Values: Clarity, Justice, Courage — displayed in a 3-column grid
+
+  The structure is identical to other pages (same header,
+  nav, footer) which is intentional — consistent layout
+  helps users navigate confidently across all pages.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <title data-i18n="about-page-title">About | Inova Palavra</title>
+  <!-- data-i18n targets this element for translation by script.js.
+       When user switches to PT, script.js updates document.title
+       using a special check: if (el.tagName === 'TITLE') -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Essential for mobile responsiveness — without this,
+       the browser zooms out to show a tiny desktop layout. -->
+
+  <!-- Load CSS in order: base → desktop → mobile.
+       Base provides the foundation.
+       Desktop and mobile override it for their screen sizes. -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/desktop.css">
   <link rel="stylesheet" href="css/mobile.css">
 </head>
+
 <body>
 
+  <!-- HEADER — identical across all pages for consistency.
+       The only difference per page is which nav link has class="active".
+       Here, "About" has class="active" to highlight the current page. -->
   <header>
     <div class="container header-content">
       <a href="index.html" class="brand">
@@ -28,6 +63,8 @@
         <ul>
           <li><a href="index.html" data-i18n="nav-home">Home</a></li>
           <li><a href="about.html" class="active" data-i18n="nav-about">About</a></li>
+          <!-- class="active" is on "About" because this IS the about page.
+               The active class triggers the green colour + underline in CSS. -->
           <li><a href="categories.html" data-i18n="nav-categories">Categories</a></li>
           <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
           <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
@@ -36,18 +73,34 @@
     </div>
   </header>
 
+  <!-- Dark overlay — appears behind the mobile menu panel.
+       Clicking it triggers closeMenu() in script.js. -->
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
+    <!-- HERO — Page title section -->
     <section class="hero-section">
       <div class="container">
         <h1 data-i18n="about-title">About Inova Palavra</h1>
+
+        <!-- .tagline is a subtitle — styled in italic gray in CSS.
+             The quotes are part of the translated text in script.js. -->
         <p class="tagline" data-i18n="about-tagline">"Words as resistance, chronicles as mirrors of society."</p>
       </div>
     </section>
 
+
+    <!-- ABOUT CONTENT — Story, Mission, and Values -->
     <section class="about-main container">
+    <!-- Using both .about-main and .container classes on the same element.
+         .about-main adds padding. .container centres and limits width. -->
+
       <div class="content-wrapper">
+      <!-- .content-wrapper creates a narrower reading column (max-width: 740px)
+           centred within the container. Keeps text at a comfortable line length. -->
+
         <h2 data-i18n="story-title">Our Story</h2>
         <p data-i18n="story-text">
           Inova Palavra was born from the desire to transform writing into a tool of justice and reflection.
@@ -61,24 +114,38 @@
           words that carry both critique and hope.
         </p>
 
+        <!-- VALUES GRID — Three cards side by side on desktop, stacked on mobile.
+             CSS Grid: grid-template-columns: repeat(3, 1fr) on desktop.
+             mobile.css overrides this to: grid-template-columns: 1fr (single column). -->
         <div class="values-grid">
+
           <div class="card">
             <h4 data-i18n="val1">Clarity</h4>
+            <!-- h4 is the 4th level heading — used for card titles within
+                 a section that already has h1 and h2 headings above it. -->
             <p data-i18n="val1-desc">Accessible language for all readers.</p>
           </div>
+
           <div class="card">
             <h4 data-i18n="val2">Justice</h4>
             <p data-i18n="val2-desc">Commitment to truth and fairness.</p>
           </div>
+
           <div class="card">
             <h4 data-i18n="val3">Courage</h4>
             <p data-i18n="val3-desc">Facing social issues with honesty.</p>
           </div>
+
         </div>
       </div>
     </section>
+
   </main>
 
+
+  <!-- FOOTER — same on every page.
+       id="copyright-text" and id="last-modified" are filled
+       dynamically by the updateFooter() function in script.js. -->
   <footer>
     <div class="container">
       <p id="copyright-text"></p>
@@ -86,6 +153,12 @@
     </div>
   </footer>
 
+  <!-- Script at end of body — all HTML elements exist by the time this runs -->
   <script src="js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

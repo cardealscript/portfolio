@@ -1,60 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title data-i18n="page-title">Inova Palavra | Critical & Creative Writing Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/desktop.css">
-  <link rel="stylesheet" href="css/mobile.css">
-</head>
-<body>
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
 
+  This is index.html — the HOME PAGE of Inova Palavra,
+  a bilingual literary platform where critical essays and
+  chronicles confront silence and expose social realities
+  in Mozambique.
+
+  This page includes:
+  - A fixed header with bilingual navigation
+  - A hero section with a call-to-action button
+  - A grid of article cards linking to all chronicles
+  - A dynamic footer (copyright + last-modified date)
+
+  Built with HTML5, CSS3, and vanilla JavaScript.
+  No frameworks. Just clean, intentional code.
+  ============================================================
+-->
+
+<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is an HTML5 document.
+     Without it, some browsers enter "quirks mode" and
+     render the page incorrectly. Always include it first. -->
+
+<html lang="en">
+<!-- lang="en" declares the page language as English.
+     This helps screen readers pronounce text correctly
+     and assists search engines in understanding the content.
+     script.js will update this dynamically when PT is selected. -->
+
+<head>
+  <!-- HEAD contains metadata — information ABOUT the page
+       that is not visible to the user, but is read by
+       browsers, search engines, and social media platforms. -->
+
+  <meta charset="UTF-8">
+  <!-- UTF-8 is the character encoding standard.
+       It supports all languages and special characters
+       (accents, symbols, emoji). Without this, special
+       characters like "ã" or "ç" would display as garbage. -->
+
+  <title data-i18n="page-title">Inova Palavra | Critical & Creative Writing Platform</title>
+  <!-- The title appears in the browser tab and in search engine results.
+       data-i18n="page-title" tells script.js to replace this text
+       when the user switches to Portuguese. -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CRITICAL for mobile. Without this:
+       - Mobile browsers zoom out to show the full desktop layout
+       - Text becomes tiny and unreadable
+       width=device-width: match the screen's actual width
+       initial-scale=1.0: don't zoom in or out on load -->
+
+  <link rel="stylesheet" href="css/base.css">
+  <!-- Loads base.css first — variables, reset, and shared styles.
+       Must come before desktop.css and mobile.css so they can
+       override the base styles when needed. -->
+
+  <link rel="stylesheet" href="css/desktop.css">
+  <!-- Desktop-specific styles (min-width: 769px).
+       Loaded on all screen sizes but only applies on large screens
+       because its rules are wrapped in a @media query. -->
+
+  <link rel="stylesheet" href="css/mobile.css">
+  <!-- Mobile-specific styles (max-width: 768px).
+       Same logic — loaded always, applies only on small screens. -->
+</head>
+
+<body>
+  <!-- BODY contains everything visible on the page.
+       The browser renders HTML elements in the order they appear here. -->
+
+  <!-- ============================================================
+       HEADER — Fixed navigation bar
+       ============================================================
+       The header is fixed to the top of the viewport (CSS: position:fixed).
+       It stays visible as the user scrolls down the page.
+       body has padding-top equal to the header height so content
+       starts below the header instead of being hidden behind it.
+       ============================================================ -->
   <header>
     <div class="container header-content">
+    <!-- .container centres the header content and limits its width.
+         .header-content is a flex row: logo on left, nav on right. -->
+
+      <!-- BRAND LOGO — links back to the home page -->
       <a href="index.html" class="brand">
         <img src="images/logo.png" alt="Inova Palavra Logo" class="logo">
+        <!-- alt text describes the image for screen readers and
+             shows as fallback text if the image fails to load. -->
         <span class="brand-name">Inova Palavra</span>
       </a>
 
+      <!-- HAMBURGER BUTTON — visible only on mobile (hidden via desktop.css) -->
       <button id="hamburger" class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <!-- aria-label="Menu" tells screen readers what this button does,
+             since it has no visible text — only three visual lines. -->
+        <span></span> <!-- Line 1 of the hamburger icon -->
+        <span></span> <!-- Line 2 of the hamburger icon -->
+        <span></span> <!-- Line 3 of the hamburger icon -->
       </button>
 
+      <!-- NAV — on desktop: horizontal links in header
+                 on mobile: slide-in panel from the right -->
       <nav>
+        <!-- CLOSE BUTTON (×) — visible only inside the mobile nav panel.
+             When the hamburger is tapped, the hamburger icon fades out
+             and this × button takes its place to close the menu. -->
         <button class="nav-close" aria-label="Fechar menu">&times;</button>
+        <!-- &times; is the HTML entity for the × character -->
+
         <ul id="main-nav">
           <li><a href="index.html" class="active" data-i18n="nav-home">Home</a></li>
+          <!-- class="active" highlights the current page link.
+               data-i18n="nav-home" tells script.js to translate this text. -->
+
           <li><a href="about.html" data-i18n="nav-about">About</a></li>
           <li><a href="categories.html" data-i18n="nav-categories">Categories</a></li>
           <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
-          <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
+
+          <li>
+            <!-- LANGUAGE TOGGLE BUTTON — switches between EN and PT -->
+            <button id="lang-btn" class="lang-btn">EN | PT</button>
+            <!-- script.js attaches a click event to this button.
+                 When clicked, it calls toggleLanguage() which
+                 translates all data-i18n elements on the page. -->
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- OVERLAY — dark semi-transparent layer behind the mobile menu.
+       Hidden by default (display:none in CSS).
+       JavaScript adds class 'open' to show it when menu opens.
+       Clicking the overlay closes the menu (handled in script.js). -->
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
+  <!-- ============================================================
+       MAIN — Primary page content
+       ============================================================
+       <main> is a semantic HTML5 element. It tells browsers and
+       screen readers: "this is the main content of this page."
+       Using semantic elements improves accessibility and SEO.
+       ============================================================ -->
   <main>
+
+    <!-- HERO SECTION — First thing the visitor sees -->
     <section class="hero-section">
       <div class="container">
         <h1 data-i18n="hero-title">Where Ideas Become Powerful Words</h1>
+        <!-- h1 is the most important heading on the page.
+             There should only be ONE h1 per page. It is the
+             main title — used heavily by search engines. -->
+
         <p data-i18n="hero-desc">
           Critical essays, reflective chronicles, and thought-provoking content
           designed to inspire students, leaders, professionals, and communities.
         </p>
+
+        <!-- CTA (Call To Action) button — scrolls down to the articles section.
+             href="#chronicles" scrolls smoothly to the element with id="chronicles"
+             This uses the scroll-behavior:smooth set in base.css on html. -->
         <a href="#chronicles" class="btn" data-i18n="hero-btn">Explore Articles</a>
       </div>
     </section>
 
+
+    <!-- CHRONICLES / ARTICLES SECTION -->
     <section id="chronicles" class="chronicles">
+    <!-- id="chronicles" is the anchor target for the hero button above -->
       <div class="container">
         <h2 data-i18n="recent-title">Recent Chronicles</h2>
 
+        <!-- CARDS GRID — CSS Grid creates responsive columns automatically.
+             On desktop: multiple columns side by side.
+             On mobile: single column stacked. -->
         <div class="cards">
+
+          <!-- Each <article> is a semantic HTML5 element for a piece of content.
+               It represents a self-contained composition (an article, blog post, etc.) -->
+
           <article class="card">
             <h3 data-i18n="card1-title">The Market of Donations</h3>
             <p data-i18n="card1-desc">A critical reflection on how donated clothes turn into business, questioning dignity and solidarity.</p>
@@ -78,11 +208,23 @@
             <p data-i18n="card4-desc">A mother's hidden secret becomes a moral trial between silence and redemption, showing that love survives.</p>
             <a href="articles/truth-to-a-child.html" class="btn-small" data-i18n="read-more">Read More</a>
           </article>
+
         </div>
       </div>
     </section>
+
   </main>
 
+
+  <!-- ============================================================
+       FOOTER — Bottom of every page
+       ============================================================
+       The copyright text and last-modified date are LEFT EMPTY here.
+       script.js fills them automatically using:
+       - new Date().getFullYear() for the current year
+       - document.lastModified for the last file change date
+       This keeps the footer always accurate without manual updates.
+       ============================================================ -->
   <footer>
     <div class="container">
       <p id="copyright-text"></p>
@@ -90,6 +232,17 @@
     </div>
   </footer>
 
+
+  <!-- SCRIPT — loaded at the very END of the body.
+       WHY: If <script> was in <head>, it would run before
+       the HTML elements exist — and all getElementById() calls
+       would return null because the elements aren't parsed yet.
+       At the end of <body>, all elements exist when the script runs. -->
   <script src="js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->

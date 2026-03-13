@@ -1,3 +1,25 @@
+<!--
+  ============================================================
+  Hello, World! 👋
+  My name is Cardeal Felisberto — frontend developer from
+  Maputo, Mozambique 🇲🇿, studying Web & Computer Programming
+  at BYU.
+
+  This is truth-to-a-child.html — an article page for
+  "How to Tell the Truth to a Child" on Inova Palavra.
+
+  This is the most personal of the four chronicles — it
+  explores the moral dilemma of a mother carrying a painful
+  secret, and whether truth and love can coexist.
+
+  NOTE: This article uses class="small-image-left" — the image
+  floats to the LEFT on desktop (text wraps on its right).
+  Compare with justice-without-defense.html which uses
+  small-image-right (floats right). Two layout variations
+  using the same CSS classes — just mirrored.
+  ============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +60,9 @@
 
   <div id="nav-overlay" class="nav-overlay"></div>
 
+
   <main>
+
     <section class="hero-section" style="padding: 80px 0 40px;">
       <div class="container">
         <h1 data-i18n="art4-title" style="max-width: 800px; margin: 0 auto;">How to Tell the Truth to a Child</h1>
@@ -48,8 +72,16 @@
       </div>
     </section>
 
+
     <article class="chronicle container">
 
+      <!-- FLOATED IMAGE — LEFT SIDE (desktop only)
+           desktop.css: float:left; width:300px; margin: 0 30px 20px 0
+           The image floats left and text flows around its right side.
+           mobile.css: float:none; width:100%; — stacked above text.
+           This is the mirror version of the right-float used in the
+           justice article — alternating float directions adds visual
+           variety across article pages. -->
       <img src="../images/truth-to-a-child.webp" alt="Mother and child" class="small-image-left">
 
       <p data-i18n="art4-p1">There are secrets that mothers carry in silence, secrets so heavy that they bend the soul. Among them lies one of the most painful confessions: that at some moment of despair, she attempted to end the life of the very child she now embraces.</p>
@@ -67,7 +99,12 @@
       <p data-i18n="art4-p5">In the end, what matters most is that love triumphed over despair. The child is here, alive and loved. Telling the truth is not about reliving shame, but about transforming guilt into a testimony of resilience and grace.</p>
 
     </article>
+    <!-- .chronicle::after clearfix: ensures the container fully wraps
+         around the left-floated image — without it, the footer could
+         appear beside the image instead of below the full article -->
+
   </main>
+
 
   <footer>
     <div class="container">
@@ -77,5 +114,10 @@
   </footer>
 
   <script src="../js/script.js"></script>
+
 </body>
 </html>
+<!--
+  Typed with love by Cardeal Felisberto 🇲🇿
+  I love to code.
+-->
