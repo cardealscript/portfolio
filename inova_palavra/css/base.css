@@ -1,0 +1,561 @@
+/* ================================================
+   INOVA PALAVRA — BASE.CSS
+   Variáveis, reset, estilos partilhados
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,700&family=Inter:wght@300;400;600&display=swap');
+
+/* ================================
+   VARIÁVEIS GLOBAIS
+   ================================ */
+:root {
+  --color-primary: #1FAF38;
+  --color-secondary: #C41212;
+  --color-dark: #121212;
+  --color-light: #fbfbfb;
+  --color-gray: #6e6e73;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --font-main: 'Inter', sans-serif;
+  --font-title: 'Cormorant Garamond', serif;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-height: 70px;
+}
+
+/* ================================
+   RESET
+   ================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Evita salto quando overflow muda */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  line-height: 1.6;
+  transition: opacity 0.3s ease;
+  /* Empurra o conteúdo para baixo do header fixo */
+  padding-top: var(--header-height);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--color-border);
+  padding: 15px 0;
+  height: var(--header-height);
+}
+
+header::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-dark);
+}
+
+/* ================================
+   BOTÃO LÍNGUA
+   ================================ */
+.lang-btn {
+  background: var(--color-dark);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-main);
+  transition: var(--transition);
+  /* Garante que é clicável */
+  position: relative;
+  z-index: 1;
+}
+
+.lang-btn:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* ================================
+   OVERLAY — escondido por defeito
+   ================================ */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+  /* Garante que não interfere com cliques quando fechado */
+  pointer-events: none;
+}
+
+.nav-overlay.open {
+  display: block;
+  pointer-events: all;
+}
+
+/* ================================
+   HERO SECTION
+   ================================ */
+.hero-section {
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: var(--color-gray);
+  max-width: 750px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+}
+
+/* ================================
+   BOTÕES
+   ================================ */
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 16px 35px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(31, 175, 56, 0.2);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.btn:hover {
+  background: #168a2c;
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(31, 175, 56, 0.3);
+}
+
+.btn-full {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.btn-small {
+  text-decoration: none;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.btn-small:hover {
+  letter-spacing: 1px;
+}
+
+/* ================================
+   CARDS / CRÓNICAS
+   ================================ */
+.chronicles {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.chronicles h2 {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--color-light);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 20px 20px 0 0;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(31, 175, 56, 0.25);
+}
+
+.card:hover::after {
+  width: 100%;
+}
+
+.card h3 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--color-gray);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+  background: var(--color-dark);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+footer p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+#last-modified {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ================================
+   FORMULÁRIO
+   ================================ */
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  background: #fff;
+  transition: border-color 0.3s;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* ================================
+   ARTIGOS / CRÓNICAS
+   ================================ */
+.chronicle {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.chronicle h1 {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.meta {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 20px;
+}
+
+.chronicle p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.article-top-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+blockquote {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-style: italic;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 30px;
+  margin: 50px 0;
+  color: var(--color-dark);
+}
+
+.chronicle::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ================================
+   CATEGORIAS
+   ================================ */
+.categories-container {
+  padding: 60px 0 80px;
+}
+
+.category-label {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.category-cards .card h3 a {
+  text-decoration: none;
+  color: var(--color-dark);
+  position: relative;
+  display: inline;
+  transition: color var(--transition);
+}
+
+.category-cards .card h3 a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-primary);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-cards .card h3 a:hover {
+  color: var(--color-primary);
+}
+
+.category-cards .card h3 a:hover::after {
+  width: 100%;
+}
+
+/* ================================
+   ABOUT
+   ================================ */
+.about-main {
+  padding: 60px 0 80px;
+}
+
+.content-wrapper {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.content-wrapper h2 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-top: 50px;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-primary);
+}
+
+.content-wrapper h2:first-child {
+  margin-top: 0;
+}
+
+.content-wrapper p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #3a3a3a;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.values-grid .card {
+  background: #f5f5f7;
+  padding: 32px 28px;
+  text-align: center;
+  border-radius: 0;
+  border: none;
+}
+
+.values-grid .card::after {
+  display: none;
+}
+
+.values-grid .card:hover {
+  background: #fff;
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.values-grid .card h4 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--color-dark);
+}
+
+.values-grid .card p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  margin-bottom: 0;
+}
+
+/* ================================
+   CONTACTO
+   ================================ */
+.contact-container {
+  padding: 60px 0 80px;
+}
+
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 56px 64px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  margin-bottom: 8px;
+}

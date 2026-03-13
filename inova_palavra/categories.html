@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="cat-page-title">Categories | Inova Palavra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Inova Palavra Logo" class="logo">
+        <span class="brand-name">Inova Palavra</span>
+      </a>
+
+      <button id="hamburger" class="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <button class="nav-close" aria-label="Fechar menu">&times;</button>
+        <ul>
+          <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav-about">About</a></li>
+          <li><a href="categories.html" class="active" data-i18n="nav-categories">Categories</a></li>
+          <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
+          <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="nav-overlay" class="nav-overlay"></div>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1 data-i18n="cat-title">Content Categories</h1>
+      </div>
+    </section>
+
+    <section class="categories-container container">
+
+      <p class="category-label" data-i18n="cat-society">Society & Poverty</p>
+      <div class="category-cards">
+        <article class="card">
+          <h3><a href="articles/market-of-donations.html" data-i18n="card1-title">The Market of Donations</a></h3>
+          <p data-i18n="card1-desc">A critical reflection on how donated clothes turn into business, questioning dignity and solidarity.</p>
+          <a href="articles/market-of-donations.html" class="btn-small" data-i18n="read-more">Read More</a>
+        </article>
+      </div>
+
+      <p class="category-label" data-i18n="cat-justice">Justice & Inequality</p>
+      <div class="category-cards">
+        <article class="card">
+          <h3><a href="articles/justice-without-defense.html" data-i18n="card2-title">Justice Without Defense</a></h3>
+          <p data-i18n="card2-desc">Exploring how poverty and lack of legal support lead innocent people to accept guilt in court.</p>
+          <a href="articles/justice-without-defense.html" class="btn-small" data-i18n="read-more">Read More</a>
+        </article>
+      </div>
+
+      <p class="category-label" data-i18n="cat-youth">Youth & Future</p>
+      <div class="category-cards">
+        <article class="card">
+          <h3><a href="articles/youth-without-future.html" data-i18n="card3-title">Youth Without Future</a></h3>
+          <p data-i18n="card3-desc">A reflection on the frustration of young graduates facing unemployment and closed opportunities.</p>
+          <a href="articles/youth-without-future.html" class="btn-small" data-i18n="read-more">Read More</a>
+        </article>
+      </div>
+
+      <p class="category-label" data-i18n="cat-family">Family & Conscience</p>
+      <div class="category-cards">
+        <article class="card">
+          <h3><a href="articles/truth-to-a-child.html" data-i18n="card4-title">How to Tell the Truth to a Child</a></h3>
+          <p data-i18n="card4-desc">A mother's hidden secret becomes a moral trial between silence and redemption, showing that love survives.</p>
+          <a href="articles/truth-to-a-child.html" class="btn-small" data-i18n="read-more">Read More</a>
+        </article>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p id="copyright-text"></p>
+      <p id="last-modified"></p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

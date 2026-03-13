@@ -1,0 +1,103 @@
+/* ================================================
+   INOVA PALAVRA — DESKTOP.CSS
+   Estilos específicos para ecrãs >= 769px
+   ================================================ */
+
+/* ================================
+   NAVEGAÇÃO DESKTOP
+   ================================ */
+@media (min-width: 769px) {
+
+  /* Hambúrguer: escondido em desktop */
+  .hamburger {
+    display: none !important;
+  }
+
+  /* Nav normal em desktop */
+  nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  nav ul li {
+    border-bottom: none;
+    width: auto;
+  }
+
+  nav ul li:last-child {
+    padding-top: 0;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    display: inline;
+    padding: 0;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--color-primary);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--color-primary);
+  }
+
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+
+  /* Botão fechar: escondido em desktop */
+  .nav-close {
+    display: none !important;
+  }
+
+  /* Overlay: nunca visível em desktop */
+  .nav-overlay {
+    display: none !important;
+  }
+
+  /* Imagens flutuantes nos artigos — apenas desktop */
+  .small-image-left {
+    float: left;
+    width: 300px;
+    margin: 0 30px 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .small-image-right {
+    float: right;
+    width: 300px;
+    margin: 0 0 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+}

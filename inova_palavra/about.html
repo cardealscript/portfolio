@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="about-page-title">About | Inova Palavra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Inova Palavra Logo" class="logo">
+        <span class="brand-name">Inova Palavra</span>
+      </a>
+
+      <button id="hamburger" class="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <button class="nav-close" aria-label="Fechar menu">&times;</button>
+        <ul>
+          <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+          <li><a href="about.html" class="active" data-i18n="nav-about">About</a></li>
+          <li><a href="categories.html" data-i18n="nav-categories">Categories</a></li>
+          <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
+          <li><button id="lang-btn" class="lang-btn">EN | PT</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="nav-overlay" class="nav-overlay"></div>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1 data-i18n="about-title">About Inova Palavra</h1>
+        <p class="tagline" data-i18n="about-tagline">"Words as resistance, chronicles as mirrors of society."</p>
+      </div>
+    </section>
+
+    <section class="about-main container">
+      <div class="content-wrapper">
+        <h2 data-i18n="story-title">Our Story</h2>
+        <p data-i18n="story-text">
+          Inova Palavra was born from the desire to transform writing into a tool of justice and reflection.
+          Created by Cardeal Felisberto, it is a platform where critical essays and chronicles confront
+          silence and expose social realities in Mozambique.
+        </p>
+
+        <h2 data-i18n="mission-title">Mission</h2>
+        <p data-i18n="mission-text">
+          To give voice to the marginalized, to question injustice, and to inspire change through
+          words that carry both critique and hope.
+        </p>
+
+        <div class="values-grid">
+          <div class="card">
+            <h4 data-i18n="val1">Clarity</h4>
+            <p data-i18n="val1-desc">Accessible language for all readers.</p>
+          </div>
+          <div class="card">
+            <h4 data-i18n="val2">Justice</h4>
+            <p data-i18n="val2-desc">Commitment to truth and fairness.</p>
+          </div>
+          <div class="card">
+            <h4 data-i18n="val3">Courage</h4>
+            <p data-i18n="val3-desc">Facing social issues with honesty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p id="copyright-text"></p>
+      <p id="last-modified"></p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
